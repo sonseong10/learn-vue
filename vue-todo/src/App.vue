@@ -24,4 +24,30 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+* {
+  font-family: "DM Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-color: #f6f6f6;
+}
+
+input {
+  border: none;
+  background-color: #fff;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+ol {
+  list-style: none;
+  padding-left: 0;
+}
+</style>
