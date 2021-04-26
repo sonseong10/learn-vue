@@ -1,11 +1,32 @@
 <template>
   <footer>
-    <h2>Footer</h2>
+    <button class="reset-btn" v-on:click="resetList" type="button">
+      Reset All
+    </button>
   </footer>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    resetList: function() {
+      localStorage.clear()
+    }
+  }
+}
 </script>
 
-<style></style>
+<style scoped>
+.reset-btn {
+  width: 120px;
+  height: 38px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #666;
+  transition: color 300ms ease-in-out;
+}
+
+.reset-btn:hover {
+  color: #ff4949;
+}
+</style>
