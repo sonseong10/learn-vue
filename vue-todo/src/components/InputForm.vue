@@ -22,10 +22,10 @@ export default {
   },
   methods: {
     addItem: function() {
-      console.log(this.newItem)
+      let obj = { completed: false, item: this.newItem }
       if (this.newItem !== "") {
         this._getKeyGenerator()
-        localStorage.setItem(this.uniqueKey, this.newItem)
+        localStorage.setItem(this.uniqueKey, JSON.stringify(obj))
         this._clearInput()
       }
     },

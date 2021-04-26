@@ -55,6 +55,10 @@ ol {
   list-style: none;
 }
 
+i.fas {
+  pointer-events: none;
+}
+
 .container {
   display: flex;
   align-items: center;
