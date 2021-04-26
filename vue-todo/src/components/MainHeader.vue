@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h2>Header</h2>
+    <h1 class="title">Todo List</h1>
   </header>
 </template>
 
@@ -8,4 +8,10 @@
 export default {}
 </script>
 
-<style></style>
+<style scoped>
+.title {
+  color: #2f3b52;
+  font-weight: 700;
+  margin: 2.5rem 0 1.5rem;
+}
+</style>
