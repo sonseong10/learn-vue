@@ -16,23 +16,17 @@
 export default {
   data: function() {
     return {
-      newItem: "",
-      uniqueKey: undefined
+      newItem: ""
     }
   },
   methods: {
     addItem: function() {
       let obj = { completed: false, item: this.newItem }
       if (this.newItem !== "") {
-        this._getKeyGenerator()
-        localStorage.setItem(this.uniqueKey, JSON.stringify(obj))
+        localStorage.setItem(this.newItem, JSON.stringify(obj))
         this._clearInput()
       }
     },
-    _getKeyGenerator: function() {
-      this.uniqueKey = new Date().getTime()
-    },
-
     _clearInput: function() {
       this.newItem = ""
     }

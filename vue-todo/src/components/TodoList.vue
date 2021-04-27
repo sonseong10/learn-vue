@@ -2,19 +2,19 @@
   <ol class="todo-list">
     <li
       class="todo-item box-shadow"
-      v-for="(todoKey, index) in todoKey"
-      v-bind:key="todoKey"
+      v-for="(todoItems, index) in todoItems"
+      v-bind:key="todoItems.item"
     >
       <button
         class="toto-title"
-        v-bind:class="{ textCompleted: todoItems[index].completed }"
-        v-on:click="toggleComplete(todoKey, todoItems[index])"
+        v-bind:class="{ textCompleted: todoItems.completed }"
+        v-on:click="toggleComplete(todoItems)"
       >
-        {{ todoItems[index].item }}
+        {{ todoItems.item }}
       </button>
       <button
         class="delete-btn"
-        v-on:click="deleteItem(todoKey, index)"
+        v-on:click="deleteItem(todoItems, index)"
         type="button"
         aria-label="Delete todo item"
       >
@@ -28,27 +28,24 @@
 export default {
   data: function() {
     return {
-      todoKey: [],
       todoItems: []
     }
   },
   methods: {
-    deleteItem: function(todoKey, index) {
-      localStorage.removeItem(todoKey)
-      this.todoKey.splice(index, 1)
+    deleteItem: function(todoItem, index) {
+      localStorage.removeItem(todoItem)
       this.todoItems.splice(index, 1)
     },
-    toggleComplete: function(todoKey, todoItem) {
+    toggleComplete: function(todoItem) {
       todoItem.completed = !todoItem.completed
       localStorage.removeItem(todoItem.item)
-      localStorage.setItem(todoKey, JSON.stringify(todoItem))
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
     }
   },
   created: function() {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoKey.push(localStorage.key(i))
           this.todoItems.push(
             JSON.parse(localStorage.getItem(localStorage.key(i)))
           )
