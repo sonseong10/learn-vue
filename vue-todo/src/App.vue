@@ -41,8 +41,8 @@ export default {
       localStorage.removeItem(todoItem.item)
       this.todoItems.splice(index, 1)
     },
-    toggleCompleted: function(todoItem) {
-      todoItem.completed = !todoItem.completed
+    toggleCompleted: function(todoItem, index) {
+      this.todoItems[index].completed = !this.todoItems[index].completed
       localStorage.removeItem(todoItem.item)
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
     },

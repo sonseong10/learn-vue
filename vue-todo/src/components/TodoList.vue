@@ -8,7 +8,7 @@
       <button
         class="toto-title"
         v-bind:class="{ textCompleted: todoItems.completed }"
-        v-on:click="toggleComplete(todoItems)"
+        v-on:click="toggleComplete(todoItems, index)"
       >
         {{ todoItems.item }}
       </button>
@@ -31,8 +31,8 @@ export default {
     deleteItem: function(todoItem, index) {
       this.$emit("removeTodo", todoItem, index)
     },
-    toggleComplete: function(todoItem) {
-      this.$emit("toggleTodo", todoItem)
+    toggleComplete: function(todoItem, index) {
+      this.$emit("toggleTodo", todoItem, index)
     }
   }
 }
