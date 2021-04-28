@@ -3,9 +3,13 @@
     <div class="container">
       <div class="wrapper">
         <main-header></main-header>
-        <input-form></input-form>
-        <todo-list></todo-list>
-        <main-footer></main-footer>
+        <input-form v-on:addTodo="addTodoItem"></input-form>
+        <todo-list
+          v-bind:propsdata="todoItems"
+          v-on:removeTodo="removeItem"
+          v-on:toggleTodo="toggleCompleted"
+        ></todo-list>
+        <main-footer v-on:resetTodo="resetList"></main-footer>
       </div>
     </div>
   </div>
@@ -18,6 +22,46 @@ import TodoList from "./components/TodoList.vue"
 import Mainfooter from "./components/MainFooter.vue"
 
 export default {
+  data: function() {
+    return {
+      todoItems: []
+    }
+  },
+  methods: {
+    addTodoItem: function(todoItems) {
+      if (localStorage.getItem(todoItems)) {
+        alert("The value you created already exists.")
+      } else {
+        let obj = { completed: false, item: todoItems }
+        localStorage.setItem(todoItems, JSON.stringify(obj))
+        this.todoItems.push(obj)
+      }
+    },
+    removeItem: function(todoItem, index) {
+      localStorage.removeItem(todoItem.item)
+      this.todoItems.splice(index, 1)
+    },
+    toggleCompleted: function(todoItem) {
+      todoItem.completed = !todoItem.completed
+      localStorage.removeItem(todoItem.item)
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
+    },
+    resetList: function() {
+      localStorage.clear()
+      this.todoItems = []
+    }
+  },
+  created: function() {
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
+          this.todoItems.push(
+            JSON.parse(localStorage.getItem(localStorage.key(i)))
+          )
+        }
+      }
+    }
+  },
   components: {
     "main-header": MainHeader,
     "input-form": InputForm,

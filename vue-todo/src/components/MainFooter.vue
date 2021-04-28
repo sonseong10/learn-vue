@@ -10,7 +10,7 @@
 export default {
   methods: {
     resetList: function() {
-      localStorage.clear()
+      this.$emit("resetTodo")
     }
   }
 }

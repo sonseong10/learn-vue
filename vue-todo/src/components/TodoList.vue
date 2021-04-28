@@ -2,7 +2,7 @@
   <ol class="todo-list">
     <li
       class="todo-item box-shadow"
-      v-for="(todoItems, index) in todoItems"
+      v-for="(todoItems, index) in propsdata"
       v-bind:key="todoItems.item"
     >
       <button
@@ -26,37 +26,29 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      todoItems: []
-    }
-  },
+  props: ["propsdata"],
   methods: {
     deleteItem: function(todoItem, index) {
-      localStorage.removeItem(todoItem)
-      this.todoItems.splice(index, 1)
+      this.$emit("removeTodo", todoItem, index)
     },
     toggleComplete: function(todoItem) {
-      todoItem.completed = !todoItem.completed
-      localStorage.removeItem(todoItem.item)
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
-    }
-  },
-  created: function() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i)))
-          )
-        }
-      }
+      this.$emit("toggleTodo", todoItem)
     }
   }
 }
 </script>
 
 <style scoped>
+.todo-list {
+  padding: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 0;
+}
+
 .todo-item {
   position: relative;
   border-radius: 5px;
