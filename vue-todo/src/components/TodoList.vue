@@ -1,5 +1,5 @@
 <template>
-  <ol class="todo-list">
+  <transition-group class="todo-list" name="list" tag="ol">
     <li
       class="todo-item box-shadow"
       v-for="(todoItems, index) in propsdata"
@@ -21,7 +21,7 @@
         <i class="fas fa-times"></i>
       </button>
     </li>
-  </ol>
+  </transition-group>
 </template>
 
 <script>
@@ -96,5 +96,14 @@ export default {
 
 .delete-btn:hover {
   color: #ff4949;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

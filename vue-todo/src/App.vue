@@ -12,6 +12,15 @@
         <main-footer v-on:resetTodo="resetList"></main-footer>
       </div>
     </div>
+    <modal v-if="showModal">
+      <h3 slot="header">
+        Notice
+        <button class="modal-close" @click="showModal = false" type="button">
+          <i class="fas fa-times"></i>
+        </button>
+      </h3>
+      <p slot="body">The value already exists.</p>
+    </modal>
   </div>
 </template>
 
@@ -20,17 +29,19 @@ import MainHeader from "./components/MainHeader.vue"
 import InputForm from "./components/InputForm.vue"
 import TodoList from "./components/TodoList.vue"
 import Mainfooter from "./components/MainFooter.vue"
+import Modal from "./components/common/Modal.vue"
 
 export default {
   data: function() {
     return {
-      todoItems: []
+      todoItems: [],
+      showModal: false
     }
   },
   methods: {
     addTodoItem: function(todoItems) {
       if (localStorage.getItem(todoItems)) {
-        alert("The value you created already exists.")
+        this.showModal = !this.showModal
       } else {
         let obj = { completed: false, item: todoItems }
         localStorage.setItem(todoItems, JSON.stringify(obj))
@@ -66,7 +77,8 @@ export default {
     "main-header": MainHeader,
     "input-form": InputForm,
     "todo-list": TodoList,
-    "main-footer": Mainfooter
+    "main-footer": Mainfooter,
+    modal: Modal
   }
 }
 </script>

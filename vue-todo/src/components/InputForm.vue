@@ -9,14 +9,27 @@
     <button class="form-button" type="submit" aria-label="add todo">
       <i class="fas fa-plus"></i>
     </button>
+
+    <modal v-if="showModal">
+      <h3 slot="header">
+        Notice
+        <button class="modal-close" @click="showModal = false" type="button">
+          <i class="fas fa-times"></i>
+        </button>
+      </h3>
+      <p slot="body">No input value</p>
+    </modal>
   </form>
 </template>
 
 <script>
+import Modal from "./common/Modal.vue"
+
 export default {
   data: function() {
     return {
-      newItem: ""
+      newItem: "",
+      showModal: false
     }
   },
   methods: {
@@ -24,11 +37,17 @@ export default {
       if (this.newItem !== "") {
         this.$emit("addTodo", this.newItem)
         this._clearInput()
+      } else {
+        this.showModal = !this.showModal
       }
+      document.activeElement.blur()
     },
     _clearInput: function() {
       this.newItem = ""
     }
+  },
+  components: {
+    modal: Modal
   }
 }
 </script>
