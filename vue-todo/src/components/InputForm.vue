@@ -33,21 +33,20 @@ export default {
     }
   },
   methods: {
-    addItem: function() {
-      if (this.newItem !== "") {
-        this.$emit("addTodo", this.newItem)
-        this._clearInput()
-      } else {
-        this.showModal = !this.showModal
-      }
+    addItem() {
+      this.newItem !== ""
+        ? this.$emit("addTodo", this.newItem)
+        : (this.showModal = !this.showModal)
+
+      this._clearInput()
       document.activeElement.blur()
     },
-    _clearInput: function() {
+    _clearInput() {
       this.newItem = ""
     }
   },
   components: {
-    modal: Modal
+    Modal
   }
 }
 </script>

@@ -9,7 +9,7 @@
 <script>
 export default {
   methods: {
-    resetList: function() {
+    resetList() {
       this.$emit("resetTodo")
     }
   }

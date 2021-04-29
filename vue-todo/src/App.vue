@@ -28,41 +28,41 @@
 import MainHeader from "./components/MainHeader.vue"
 import InputForm from "./components/InputForm.vue"
 import TodoList from "./components/TodoList.vue"
-import Mainfooter from "./components/MainFooter.vue"
+import MainFooter from "./components/MainFooter.vue"
 import Modal from "./components/common/Modal.vue"
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: [],
       showModal: false
     }
   },
   methods: {
-    addTodoItem: function(todoItems) {
+    addTodoItem(todoItems) {
       if (localStorage.getItem(todoItems)) {
         this.showModal = !this.showModal
       } else {
-        let obj = { completed: false, item: todoItems }
+        const obj = { completed: false, item: todoItems }
         localStorage.setItem(todoItems, JSON.stringify(obj))
         this.todoItems.push(obj)
       }
     },
-    removeItem: function(todoItem, index) {
+    removeItem(todoItem, index) {
       localStorage.removeItem(todoItem.item)
       this.todoItems.splice(index, 1)
     },
-    toggleCompleted: function(todoItem, index) {
+    toggleCompleted(todoItem, index) {
       this.todoItems[index].completed = !this.todoItems[index].completed
       localStorage.removeItem(todoItem.item)
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
     },
-    resetList: function() {
+    resetList() {
       localStorage.clear()
       this.todoItems = []
     }
   },
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
@@ -74,11 +74,11 @@ export default {
     }
   },
   components: {
-    "main-header": MainHeader,
-    "input-form": InputForm,
-    "todo-list": TodoList,
-    "main-footer": Mainfooter,
-    modal: Modal
+    MainHeader,
+    InputForm,
+    TodoList,
+    MainFooter,
+    Modal
   }
 }
 </script>
