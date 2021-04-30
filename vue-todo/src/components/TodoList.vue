@@ -2,7 +2,7 @@
   <transition-group class="todo-list" name="list" tag="ol">
     <li
       class="todo-item box-shadow"
-      v-for="(todoItems, index) in propsdata"
+      v-for="(todoItems, index) in this.$store.state.todoItems"
       v-bind:key="todoItems.item"
     >
       <button
@@ -14,7 +14,7 @@
       </button>
       <button
         class="delete-btn"
-        v-on:click="deleteItem(todoItems, index)"
+        v-on:click="removeItem(todoItems, index)"
         type="button"
         aria-label="Delete todo item"
       >
@@ -26,13 +26,12 @@
 
 <script>
 export default {
-  props: ["propsdata"],
   methods: {
-    deleteItem(todoItem, index) {
-      this.$emit("removeTodo", todoItem, index)
+    removeItem(todoItems, index) {
+      this.$store.commit("removeTodoItem", { todoItems, index })
     },
-    toggleComplete(todoItem, index) {
-      this.$emit("toggleTodo", todoItem, index)
+    toggleComplete(todoItems, index) {
+      this.$store.commit("toggleTodoCompleted", { todoItems, index })
     }
   }
 }

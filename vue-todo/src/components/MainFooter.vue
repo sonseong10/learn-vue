@@ -10,7 +10,7 @@
 export default {
   methods: {
     resetList() {
-      this.$emit("resetTodo")
+      this.$store.commit("resetTodo")
     }
   }
 }

@@ -17,7 +17,7 @@
           <i class="fas fa-times"></i>
         </button>
       </h3>
-      <p slot="body">No input value</p>
+      <p slot="body">{{ msg }}</p>
     </modal>
   </form>
 </template>
@@ -29,20 +29,34 @@ export default {
   data: function() {
     return {
       newItem: "",
+      msg: "",
       showModal: false
     }
   },
   methods: {
     addItem() {
-      this.newItem !== ""
-        ? this.$emit("addTodo", this.newItem)
-        : (this.showModal = !this.showModal)
+      const value = this.newItem.trim()
+      this._checkItem(value) ? this.$store.commit("addTodoItem", value) : false
 
       this._clearInput()
-      document.activeElement.blur()
     },
     _clearInput() {
       this.newItem = ""
+      document.activeElement.blur()
+    },
+    _checkItem(value) {
+      if (value === "") {
+        this._showModal("No input value.")
+        return false
+      } else if (localStorage.getItem(value)) {
+        this._showModal("The value already exists.")
+        return false
+      }
+      return true
+    },
+    _showModal(str) {
+      this.msg = str
+      this.showModal = !this.showModal
     }
   },
   components: {
