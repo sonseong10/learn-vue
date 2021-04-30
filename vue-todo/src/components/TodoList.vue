@@ -2,37 +2,40 @@
   <transition-group class="todo-list" name="list" tag="ol">
     <li
       class="todo-item box-shadow"
-      v-for="(todoItems, index) in this.$store.state.todoItems"
+      v-for="(todoItems, index) in this.todoItems"
       v-bind:key="todoItems.item"
     >
       <button
         class="toto-title"
         v-bind:class="{ textCompleted: todoItems.completed }"
-        v-on:click="toggleComplete(todoItems, index)"
+        v-on:click="toggleComplete({ todoItems, index })"
       >
         {{ todoItems.item }}
       </button>
       <button
         class="delete-btn"
-        v-on:click="removeItem(todoItems, index)"
+        v-on:click="removeItem({ todoItems, index })"
         type="button"
         aria-label="Delete todo item"
       >
-        <i class="fas fa-times"></i>
+        <i class="fas fa-times" aria-hidden></i>
       </button>
     </li>
   </transition-group>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex"
+
 export default {
   methods: {
-    removeItem(todoItems, index) {
-      this.$store.commit("removeTodoItem", { todoItems, index })
-    },
-    toggleComplete(todoItems, index) {
-      this.$store.commit("toggleTodoCompleted", { todoItems, index })
-    }
+    ...mapMutations({
+      removeItem: "removeTodoItem",
+      toggleComplete: "toggleTodoCompleted"
+    })
+  },
+  computed: {
+    ...mapGetters({ todoItems: "getTodoItems" })
   }
 }
 </script>

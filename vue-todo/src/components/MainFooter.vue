@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex"
+
 export default {
   methods: {
-    resetList() {
-      this.$store.commit("resetTodo")
-    }
+    ...mapMutations({
+      resetList: "resetTodo"
+    })
   }
 }
 </script>
