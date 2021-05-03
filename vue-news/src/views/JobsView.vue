@@ -1,11 +1,10 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    jobs
   </div>
 </template>
 
 <script>
-/* eslint-disable */
 export default {}
 </script>
 
