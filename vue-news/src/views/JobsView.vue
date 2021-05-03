@@ -1,11 +1,22 @@
 <template>
   <div>
-    jobs
+    <div v-for="item in fetchedJobs" v-bind:key="item.id">
+      {{ item.title }}
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapGetters } from "vuex"
+
+export default {
+  computed: {
+    ...mapGetters(["fetchedJobs"])
+  },
+  created() {
+    this.$store.dispatch("FETCH_JOBS")
+  }
+}
 </script>
 
 <style></style>
