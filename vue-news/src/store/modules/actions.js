@@ -1,4 +1,4 @@
-import { fetchList } from "../../service/api/news-api"
+import { fetchList, fetchUser } from "../../service/api/news-api"
 
 export default {
   FETCH_NEWS({ commit }) {
@@ -16,6 +16,11 @@ export default {
   FETCH_ASK({ commit }) {
     fetchList("paramAsk")
       .then(response => commit("SET_ASK", response.data))
+      .catch(error => console.log(error))
+  },
+  FETCH_USER({ commit }, uaserid) {
+    fetchUser(uaserid)
+      .then(response => commit("SET_USER", response.data))
       .catch(error => console.log(error))
   }
 }
