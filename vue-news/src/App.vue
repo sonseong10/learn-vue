@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <gnb-header></gnb-header>
-    <router-view></router-view>
+    <transition name="page">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -18,8 +20,9 @@ export default {
 <style>
 * {
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+  font-family: "Roboto", sans-serif;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -34,9 +37,29 @@ ol {
   list-style: none;
 }
 
+dl,
+dd {
+  margin: 0;
+}
+
+small {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+}
+
 a {
   text-decoration: none;
   color: #000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
 }
 
 .visually-hidden {
@@ -49,5 +72,14 @@ a {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* router transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
