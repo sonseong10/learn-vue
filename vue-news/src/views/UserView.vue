@@ -1,29 +1,24 @@
 <template>
-  <section class="container">
-    <h2 class="visually-hidden">user infomation</h2>
-    <div class="card">
-      <i class="fas fa-user"></i>
-      <dl class="user-list">
-        <div class="user-item">
-          <dt class="user-title">Name</dt>
-          <dd class="user-desc">{{ fetchedUser.id }}</dd>
-        </div>
-        <div class="user-item">
-          <dt class="user-title">Karma</dt>
-          <dd class="user-desc">{{ fetchedUser.karma }}</dd>
-        </div>
-        <div class="user-item">
-          <dt class="user-title">Created</dt>
-          <dd class="user-desc">{{ fetchedUser.created }}</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
+  <user-profile>
+    <template slot="username">
+      <span class="deco">Name</span> {{ fetchedUser.id }}
+    </template>
+    <template slot="created">
+      <span class="deco">created</span>{{ fetchedUser.created }}
+    </template>
+    <template slot="karma">
+      <span class="deco">karma</span>{{ fetchedUser.karma }}
+    </template>
+  </user-profile>
 </template>
 
 <script>
 import { mapGetters } from "vuex"
+import UserProfile from "../components/UserProfile.vue"
+
 export default {
+  components: { UserProfile },
+
   computed: {
     ...mapGetters(["fetchedUser"])
   },
@@ -34,45 +29,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.container {
-  padding: 20px;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px;
-  border-radius: 5px;
-  max-width: 270px;
-  background-color: #f7f7f7;
-}
-
-.fa-user {
-  margin-right: 16px;
-  font-size: 32px;
-  text-align: center;
-  color: #1d1d1d;
-}
-
-.user-item {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.user-title {
-  font-weight: 700;
-  color: #252525;
-}
-
-.user-title::after {
-  margin: 0 2px;
-  content: ":";
-}
-
-.user-desc {
-  color: #1d1d1d;
-}
-</style>
+<style></style>
