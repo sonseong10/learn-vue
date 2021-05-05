@@ -31,11 +31,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
 .user-info {
   margin-bottom: 1em;
 }

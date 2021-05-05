@@ -54,12 +54,13 @@ a {
   color: #000;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 p {
   margin: 0;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .visually-hidden {

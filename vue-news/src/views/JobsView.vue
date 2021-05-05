@@ -1,21 +1,12 @@
 <template>
-  <div>
-    <div v-for="item in fetchedJobs" v-bind:key="item.id">
-      {{ item.title }}
-    </div>
-  </div>
+  <list-item></list-item>
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import ListItem from "../components/ListItem.vue"
 
 export default {
-  computed: {
-    ...mapGetters(["fetchedJobs"])
-  },
-  created() {
-    this.$store.dispatch("FETCH_JOBS")
-  }
+  components: { ListItem }
 }
 </script>
 

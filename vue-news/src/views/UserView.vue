@@ -36,23 +36,21 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   padding: 20px;
-  height: 100vh;
-  background-color: #f7f7f7;
 }
 
 .card {
-  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
   border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 2px 2px 4px #00000010;
+  max-width: 270px;
+  background-color: #f7f7f7;
 }
 
 .fa-user {
-  margin-bottom: 8px;
+  margin-right: 16px;
   font-size: 32px;
   text-align: center;
   color: #1d1d1d;
