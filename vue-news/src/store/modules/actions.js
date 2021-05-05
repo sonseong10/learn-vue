@@ -1,31 +1,37 @@
-import { fetchList, fetchUser, fetchItem } from "../../service/api/news-api"
+import {
+  fetchNews,
+  fetchJobs,
+  fetchAsk,
+  fetchUser,
+  fetchItem
+} from "../../service/api/news-api"
 
 export default {
   FETCH_NEWS({ commit }) {
-    fetchList("paramNews")
-      .then(response => commit("SET_NEWS", response.data))
+    fetchNews()
+      .then(({ data }) => commit("SET_NEWS", data))
       .catch(error => console.log(error))
   },
 
   FETCH_JOBS({ commit }) {
-    fetchList("paramJobs")
-      .then(response => commit("SET_JOBS", response.data))
+    fetchJobs()
+      .then(({ data }) => commit("SET_JOBS", data))
       .catch(error => console.log(error))
   },
 
   FETCH_ASK({ commit }) {
-    fetchList("paramAsk")
-      .then(response => commit("SET_ASK", response.data))
+    fetchAsk()
+      .then(({ data }) => commit("SET_ASK", data))
       .catch(error => console.log(error))
   },
   FETCH_USER({ commit }, uaserid) {
     fetchUser(uaserid)
-      .then(response => commit("SET_USER", response.data))
+      .then(({ data }) => commit("SET_USER", data))
       .catch(error => console.log(error.response))
   },
   FETCH_ITEM({ commit }, itemid) {
     fetchItem(itemid)
-      .then(response => commit("SET_ITEM", response.data)) //commit("SET_ITEM", response.data))
+      .then(({ data }) => commit("SET_ITEM", data)) //commit("SET_ITEM", response.data))
       .catch(error => console.log(error.response))
   }
 }

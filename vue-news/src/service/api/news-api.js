@@ -1,14 +1,19 @@
 import axios from "axios"
 
 const config = {
-  baseUrl: "https://api.hnpwa.com/v0/",
-  paramNews: "news/1.json",
-  paramJobs: "jobs/1.json",
-  paramAsk: "ask/1.json"
+  baseUrl: "https://api.hnpwa.com/v0/"
 }
 
-function fetchList(type) {
-  return axios.get(`${config.baseUrl}${config[type]}`)
+function fetchNews() {
+  return axios.get(`${config.baseUrl}news/1.json`)
+}
+
+function fetchAsk() {
+  return axios.get(`${config.baseUrl}ask/1.json`)
+}
+
+function fetchJobs() {
+  return axios.get(`${config.baseUrl}jobs/1.json`)
 }
 
 function fetchUser(userId) {
@@ -19,4 +24,4 @@ function fetchItem(itemId) {
   return axios.get(`${config.baseUrl}item/${itemId}.json`)
 }
 
-export { fetchList, fetchUser, fetchItem }
+export { fetchNews, fetchAsk, fetchJobs, fetchUser, fetchItem }
