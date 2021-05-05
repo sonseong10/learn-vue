@@ -51,7 +51,12 @@ small {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #1d1d1d;
+}
+
+a:hover {
+  color: #42b883;
+  text-decoration: underline;
 }
 
 p {
