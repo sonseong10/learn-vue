@@ -1,13 +1,16 @@
 <template>
   <user-profile>
     <template slot="username">
-      <span class="deco">Name</span> {{ fetchedUser.id }}
+      <span class="visually" aria-hidden>Name</span>
+      {{ fetchedUser.id }}
     </template>
     <template slot="created">
-      <span class="deco">created</span>{{ fetchedUser.created }}
+      <span class="visually" aria-hidden>created</span>
+      {{ fetchedUser.created }}
     </template>
     <template slot="karma">
-      <span class="deco">karma</span>{{ fetchedUser.karma }}
+      <span class="visually" aria-hidden>karma</span>
+      {{ fetchedUser.karma }}
     </template>
   </user-profile>
 </template>
