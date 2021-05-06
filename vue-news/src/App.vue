@@ -4,15 +4,40 @@
     <transition name="page">
       <router-view></router-view>
     </transition>
+    <spinner :loading="spinnerStatus"></spinner>
   </div>
 </template>
 
 <script>
 import GnbHeader from "./components/GnbHeader.vue"
+import Spinner from "./components/Spinner.vue"
+import bus from "./utils/bus"
 
 export default {
   components: {
-    GnbHeader
+    GnbHeader,
+    Spinner
+  },
+  data() {
+    return {
+      spinnerStatus: false
+    }
+  },
+  methods: {
+    startSpinner() {
+      this.spinnerStatus = true
+    },
+    endSpinner() {
+      this.spinnerStatus = false
+    }
+  },
+  created() {
+    bus.$on("start:spinner", this.startSpinner)
+    bus.$on("end:spinner", this.endSpinner)
+  },
+  beforDestroy() {
+    bus.$off("start:spinner", this.startSpinner)
+    bus.$off("end:spinner", this.endSpinner)
   }
 }
 </script>

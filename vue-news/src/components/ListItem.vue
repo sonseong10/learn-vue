@@ -45,30 +45,9 @@
 
 <script>
 export default {
-  created() {
-    const cheackType = this.$route.name
-    if (cheackType === "news") {
-      this.$store.dispatch("FETCH_NEWS")
-    } else if (cheackType === "ask") {
-      this.$store.dispatch("FETCH_ASK")
-    } else if (cheackType === "jobs") {
-      this.$store.dispatch("FETCH_JOBS")
-    } else {
-      return alert("error")
-    }
-  },
   computed: {
     listOptions() {
-      const cheackType = this.$route.name
-      if (cheackType === "news") {
-        return this.$store.state.news
-      } else if (cheackType === "ask") {
-        return this.$store.state.ask
-      } else if (cheackType === "jobs") {
-        return this.$store.state.jobs
-      } else {
-        return this.$store.state.jobs
-      }
+      return this.$store.state.list
     }
   }
 }
