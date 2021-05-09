@@ -1,5 +1,8 @@
 <template>
   <header class="global-header">
+    <router-link class="gnb-item-link" to="/">
+      <img class="logo" src="../assets/logo.svg" alt="brand logo" />
+    </router-link>
     <nav class="gnb">
       <h2 class="visually-hidden">GNB</h2>
       <ul class="gnb-list">
@@ -29,6 +32,11 @@ export default {}
   height: 50px;
   padding: 0 8px;
   background-color: #42b883;
+}
+
+.logo {
+  display: block;
+  border: 2px solid #fff;
 }
 
 .gnb-list {
