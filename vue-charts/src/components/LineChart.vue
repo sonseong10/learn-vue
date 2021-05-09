@@ -3,9 +3,6 @@
 </template>
 
 <script>
-/* eslint-disable */
-import Chart from "chart.js"
-
 export default {
   mounted() {
     var ctx = this.$refs.lineChart
@@ -26,7 +23,7 @@ export default {
       data,
       options: {}
     }
-    var myChart = new Chart(ctx, config)
+    new this.$_Chart(ctx, config)
   }
 }
 </script>

@@ -3,13 +3,10 @@
 </template>
 
 <script>
-/* eslint-disable */
-import Chart from "chart.js"
-
 export default {
   mounted() {
     var ctx = this.$refs.barChart
-    var myChart = new Chart(ctx, {
+    new this.$_Chart(ctx, {
       type: "bar",
       data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
