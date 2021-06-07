@@ -12,4 +12,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import './style/reset.css';
+@import './style/global.css';
+</style>
