@@ -53,7 +53,7 @@ export default {
 				const status = response.status;
 				const username = response.data.user.username;
 
-				this.showLogMessage(status, true, username);
+				this.showLogMessage(status, username);
 			} catch (error) {
 				const status = error.response.status;
 				this.showLogMessage(status);
@@ -67,18 +67,18 @@ export default {
 			this.password = '';
 		},
 
-		showLogMessage(status, type = false, username = '') {
+		showLogMessage(status, username = '') {
 			switch (status) {
 				case 200:
-					this.errorStyle = type;
+					this.errorStyle = true;
 					this.logMessage = `${username}님 로그인이 완료되었습니다.`;
 					break;
 				case 401:
-					this.errorStyle = type;
+					this.errorStyle = false;
 					this.logMessage = '비밀번호가 맞지 않아 로그인에 실패하였습니다.';
 					break;
 				case 500:
-					this.errorStyle = type;
+					this.errorStyle = false;
 					this.logMessage = '서버에 문제가 있어 로그인하지 못했습니다.';
 					break;
 				default:
