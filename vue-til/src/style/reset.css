@@ -5,7 +5,6 @@ body {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 	font-family: 'Spoqa Han Sans', 'Sans-serif';
 }
@@ -40,8 +39,6 @@ button {
   padding: 0;
   background-color: transparent;
   border: 0;
-	font-family: inherit;
-	font-size: 90%;
 	cursor: pointer;
 }
 
