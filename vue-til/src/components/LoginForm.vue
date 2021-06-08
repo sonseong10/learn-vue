@@ -1,20 +1,29 @@
 <template>
-	<form @submit.prevent="submitForm">
-		<div>
-			<label for="username">ID: </label>
+	<form class="auth-form" @submit.prevent="submitForm">
+		<div class="input-box">
+			<label for="username">ID</label>
 			<input id="username" type="text" v-model="username" />
 		</div>
+		<strong class="validation-text">
+			<span class="warning" v-if="!isUsernameValid && username">
+				Please enter an email address
+			</span>
+		</strong>
 
-		<div>
-			<label for="password">PW: </label>
-			<input id="password" type="text" v-model="password" />
+		<div class="input-box">
+			<label for="password">PW</label>
+			<input id="password" type="password" v-model="password" />
 		</div>
 
-		<button :disabled="!isUsernameValid || !password" type="submit">
+		<button
+			class="form-button"
+			:disabled="!isUsernameValid || !password"
+			type="submit"
+		>
 			로그인
 		</button>
 
-		<p :class="{ isActive: !errorStyle }">
+		<p class="result-text" :class="{ warning: !errorStyle }">
 			{{ logMessage }}
 		</p>
 	</form>
@@ -91,7 +100,17 @@ export default {
 </script>
 
 <style scoped>
-.isActive {
-	color: #ff4949;
+.validation-text {
+	align-self: flex-end;
+	margin-bottom: 10px;
+}
+
+.result-text {
+	margin-top: 20px;
+}
+
+.warning {
+	color: #ff4057;
+	font-weight: 400;
 }
 </style>

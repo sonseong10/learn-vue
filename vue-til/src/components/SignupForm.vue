@@ -1,18 +1,18 @@
 <template>
-	<form @submit.prevent="submitForm">
-		<div>
-			<label for="username">ID: </label>
+	<form class="auth-form" @submit.prevent="submitForm">
+		<div class="input-box">
+			<label for="username">ID</label>
 			<input id="username" type="text" v-model="username" />
 		</div>
-		<div>
-			<label for="password">PassWord: </label>
+		<div class="input-box">
+			<label for="password">PW</label>
 			<input id="password" type="password" v-model="password" />
 		</div>
-		<div>
-			<label for="nickname">NickName: </label>
+		<div class="input-box">
+			<label for="nickname">NicName</label>
 			<input id="nickname" type="text" v-model="nickname" />
 		</div>
-		<button type="submit">회원 가입</button>
+		<button class="form-button" type="submit">회원 가입</button>
 		<p>{{ logMessage }}</p>
 	</form>
 </template>
