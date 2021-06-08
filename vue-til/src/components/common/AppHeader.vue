@@ -1,20 +1,24 @@
 <template>
 	<header class="header">
-		<router-link class="logo" to="/">
-			<img src="@/assets/logo.png" alt="Logo image" />
-			<strong>TIL</strong>
-		</router-link>
-		<nav class="gnb">
-			<h2 class="visually-hidden">GNB</h2>
-			<ul class="router-list">
-				<li class="router-item">
-					<router-link class="router-link" to="/login">Login</router-link>
-				</li>
-				<li class="router-item">
-					<router-link class="router-link" to="/signup">Signup</router-link>
-				</li>
-			</ul>
-		</nav>
+		<div class="container">
+			<div class="wrap">
+				<router-link class="logo" to="/">
+					<img src="@/assets/logo.png" alt="Logo image" />
+					<strong>TIL</strong>
+				</router-link>
+				<nav class="gnb">
+					<h2 class="visually-hidden">GNB</h2>
+					<ul class="router-list">
+						<li class="router-item">
+							<router-link class="router-link" to="/login">Login</router-link>
+						</li>
+						<li class="router-item">
+							<router-link class="router-link" to="/signup">Signup</router-link>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 	</header>
 </template>
 
@@ -24,13 +28,16 @@ export default {};
 
 <style scoped>
 .header {
+	background-color: #fff;
+	border-bottom: 1px solid #ececec;
+	z-index: 2;
+}
+
+.wrap {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 14px;
 	height: calc(50px - 1px);
-	background-color: #fff;
-	border-bottom: 1px solid #ececec;
 }
 
 .logo {
