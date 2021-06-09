@@ -57,12 +57,9 @@ export default {
 					username: this.username,
 					password: this.password,
 				};
-
-				const response = await loginUser(userData);
-				const status = response.status;
-				const username = response.data.user.username;
-
-				this.showLogMessage(status, username);
+				const { data } = await loginUser(userData);
+				this.$store.commit('setUsername', data.user.username);
+				this.$router.push('/main');
 			} catch (error) {
 				const status = error.response.status;
 				this.showLogMessage(status);

@@ -6,15 +6,33 @@
 					<img src="@/assets/logo.png" alt="Logo image" />
 					<strong>TIL</strong>
 				</router-link>
+
 				<nav class="gnb">
 					<h2 class="visually-hidden">GNB</h2>
+
 					<ul class="router-list">
-						<li class="router-item">
-							<router-link class="router-link" to="/login">Login</router-link>
-						</li>
-						<li class="router-item">
-							<router-link class="router-link" to="/signup">Signup</router-link>
-						</li>
+						<template v-if="this.isLogin">
+							<li class="router-item">
+								<button class="router-link" type="button">
+									{{ $store.state.username }}
+								</button>
+							</li>
+							<li class="router-item">
+								<button class="router-link" @click="logoutUser" type="button">
+									Logout
+								</button>
+							</li>
+						</template>
+						<template v-else>
+							<li class="router-item">
+								<router-link class="router-link" to="/login">Login</router-link>
+							</li>
+							<li class="router-item">
+								<router-link class="router-link" to="/signup"
+									>Signup</router-link
+								>
+							</li>
+						</template>
 					</ul>
 				</nav>
 			</div>
@@ -23,7 +41,20 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapMutations } from 'vuex';
+export default {
+	computed: {
+		...mapGetters(['isLogin']),
+	},
+
+	methods: {
+		...mapMutations(['clearUsername']),
+		logoutUser() {
+			this.clearUsername();
+			this.$router.push('/login');
+		},
+	},
+};
 </script>
 
 <style scoped>
