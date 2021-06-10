@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/auth';
+import { mapActions } from 'vuex';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -55,15 +55,15 @@ export default {
 		},
 	},
 	methods: {
+		...mapActions(['LOGIN']),
+
 		async submitForm() {
 			try {
 				const userData = {
 					username: this.username,
 					password: this.password,
 				};
-				const { data } = await loginUser(userData);
-				this.$store.commit('setToken', data.token);
-				this.$store.commit('setUsername', data.user.username);
+				await this.LOGIN(userData);
 				this.$router.push('/main');
 			} catch (error) {
 				const status = error.response.status;
