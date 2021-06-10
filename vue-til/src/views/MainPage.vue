@@ -1,9 +1,15 @@
 <template>
-	<div>Main</div>
+	<div class="container">
+		<h1 class="form-title">Today I Learned</h1>
+		<PostList></PostList>
+	</div>
 </template>
 
 <script>
-export default {};
+import PostList from '@/components/posts/PostList.vue';
+export default {
+	components: { PostList },
+};
 </script>
 
 <style></style>
