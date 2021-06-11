@@ -9,6 +9,7 @@ body {
 }
 
 .container {
+  position: relative;
   max-width: 1140px;
 	margin: 0 auto;
 	padding: 0 10px;
@@ -68,8 +69,9 @@ body {
   padding: 0 10px;
   width: 100%;
   height: 32px;
+	background-color: #fff;
+  border: 1px solid #eee;
   border-radius: 3px;
-  border: 1px solid #eee
 }
 
 .input-box label {
@@ -83,8 +85,10 @@ body {
   margin: 0 2px;
 }
 
-.input-box input {
+.input-box input,
+.input-box textarea {
   width: 100%;
+  color: #1d1d1d;
   outline: none;
 }
 
@@ -104,6 +108,20 @@ body {
 .form-button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
+}
+
+.validation-text {
+	align-self: flex-end;
+	margin-bottom: 10px;
+}
+
+.result-text {
+	margin-top: 20px;
+}
+
+.warning {
+	color: #ff4057;
+	font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {

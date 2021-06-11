@@ -95,18 +95,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.validation-text {
-	align-self: flex-end;
-	margin-bottom: 10px;
-}
-
-.result-text {
-	margin-top: 20px;
-}
-
-.warning {
-	color: #ff4057;
-	font-weight: 400;
-}
-</style>
+<style></style>

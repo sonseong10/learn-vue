@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .icon-button {
-	position: absolute;
+	position: fixed;
 	right: 30px;
 	bottom: 40px;
 	display: flex;
