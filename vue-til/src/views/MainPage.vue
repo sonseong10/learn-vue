@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<h1 class="form-title">Today I Learned</h1>
+		<h1 class="page-title">Today I Learned</h1>
 		<router-link class="icon-button" to="/add">
 			<PlusIcon></PlusIcon>
 		</router-link>

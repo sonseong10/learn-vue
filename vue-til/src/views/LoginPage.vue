@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<h1 class="form-title">로그인 페이지</h1>
+		<h1 class="page-title">로그인 페이지</h1>
 		<LoginForm></LoginForm>
 	</div>
 </template>
