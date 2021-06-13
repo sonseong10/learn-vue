@@ -15,10 +15,10 @@
 			/>
 		</div>
 
-		<button class="form-button" type="submit" :disabled="!contentsValid()">
+		<button class="form-button" type="submit" :disabled="!isContentsValid">
 			등록
 		</button>
-		<strong class="validation-text" v-if="!contentsValid()">
+		<strong class="validation-text" v-if="!isContentsValid">
 			<span class="warning"> 200자 이상 입력 하셨습니다. </span>
 		</strong>
 		<strong class="validation-text">
@@ -40,6 +40,11 @@ export default {
 			errorMsg: '',
 		};
 	},
+	computed: {
+		isContentsValid() {
+			return this.contents.length <= 200;
+		},
+	},
 	methods: {
 		async submitForm() {
 			try {
@@ -59,14 +64,9 @@ export default {
 				this.initForm();
 			}
 		},
-
 		initForm() {
 			this.title = '';
 			this.contents = '';
-		},
-
-		contentsValid() {
-			return this.contents.length <= 200;
 		},
 	},
 };
