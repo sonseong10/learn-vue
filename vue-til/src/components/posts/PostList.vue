@@ -15,7 +15,7 @@
 <script>
 import PostItem from './PostItem.vue';
 import LoadingSpinner from '@/components/common/LodingSpinner.vue';
-import { fetchPosts } from '@/api/posts';
+import { fetchPostsAll } from '@/api/posts';
 
 export default {
 	components: { PostItem, LoadingSpinner },
@@ -28,7 +28,7 @@ export default {
 	methods: {
 		async fetchData() {
 			this.isLoding = true;
-			const { data } = await fetchPosts();
+			const { data } = await fetchPostsAll();
 			this.isLoding = false;
 			this.postItems = data.posts;
 		},

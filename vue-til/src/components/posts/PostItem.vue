@@ -4,7 +4,7 @@
 			<header class="card-header">
 				<h2 class="post-title">{{ postItem.title }}</h2>
 				<div class="tool-button-wrap">
-					<button class="edit-button" type="button">
+					<button class="edit-button" type="button" @click="routeEditPage">
 						<EditIcon size="1.2x"></EditIcon>
 					</button>
 					<button class="delete-button" type="button" @click="deleteItem">
@@ -41,6 +41,10 @@ export default {
 		async deleteItem() {
 			await deletePost(this.postItem._id);
 			this.$emit('refresh');
+		},
+		routeEditPage() {
+			const id = this.postItem._id;
+			this.$router.push(`/post/${id}`);
 		},
 	},
 };
