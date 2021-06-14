@@ -2,7 +2,7 @@
 	<header class="header">
 		<div class="container">
 			<div class="wrap">
-				<router-link class="logo" to="/">
+				<router-link class="logo" :to="logoLink">
 					<img src="@/assets/logo.png" alt="Logo image" />
 					<strong>TIL</strong>
 				</router-link>
@@ -41,16 +41,24 @@
 </template>
 
 <script>
+import { deleteCookie } from '@/utils/cookies';
 import { mapGetters, mapMutations } from 'vuex';
 export default {
 	computed: {
 		...mapGetters(['isLogin']),
-	},
 
+		logoLink() {
+			return this.$store.getters.isLogin ? '/main' : '/login';
+		},
+	},
 	methods: {
-		...mapMutations(['clearUsername']),
+		...mapMutations(['clearUsername', 'clearToken']),
+
 		logoutUser() {
 			this.clearUsername();
+			this.clearToken();
+			deleteCookie('til_auth');
+			deleteCookie('til_user');
 			this.$router.push('/login');
 		},
 	},
