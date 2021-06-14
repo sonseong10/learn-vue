@@ -53,6 +53,7 @@ export default {
 <style scoped>
 .post-item {
 	flex-grow: 1;
+	width: 100%;
 }
 
 .post-card {
@@ -124,6 +125,7 @@ export default {
 @media screen and (min-width: 1200px) {
 	.post-item {
 		flex-grow: 0;
+		width: auto;
 	}
 
 	.post-card {
