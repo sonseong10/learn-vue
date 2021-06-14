@@ -16,7 +16,7 @@
 			<p class="post-desc">{{ postItem.contents }}</p>
 
 			<footer class="card-footer">
-				<span class="post-time">{{ postItem.createdAt }}</span>
+				<span class="post-time">{{ postItem.createdAt | formatDate }}</span>
 			</footer>
 		</div>
 	</li>
