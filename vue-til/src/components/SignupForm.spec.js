@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
-import LoginForm from './LoginForm.vue';
+import SignupForm from './SignupForm.vue';
 
-describe('LoginForm.vue', () => {
+describe('SignupForm.vue', () => {
 	test('Visible warning message if ID is not in email format', () => {
-		const wrapper = shallowMount(LoginForm, {
+		const wrapper = shallowMount(SignupForm, {
 			data() {
 				return {
 					username: 'test',
@@ -14,12 +14,13 @@ describe('LoginForm.vue', () => {
 		expect(warningText.exists()).toBeTruthy();
 	});
 
-	test('ID, Password is empty, button is not available.', () => {
-		const wrapper = shallowMount(LoginForm, {
+	test('ID, Password and Nickname is empty, button is not available.', () => {
+		const wrapper = shallowMount(SignupForm, {
 			data() {
 				return {
 					username: '',
 					password: '',
+					nickname: '',
 				};
 			},
 		});
