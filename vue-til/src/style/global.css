@@ -119,7 +119,8 @@ body {
 	margin-top: 20px;
 }
 
-.warning {
+.warning,
+.error {
 	color: #ff4057;
 	font-weight: 400;
 }

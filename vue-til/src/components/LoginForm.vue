@@ -6,7 +6,7 @@
 		</div>
 		<strong class="validation-text">
 			<span class="warning" v-if="!isUsernameValid && username">
-				Please enter an email address
+				이메일 형식을 입력 해 주세요.
 			</span>
 		</strong>
 
@@ -28,7 +28,7 @@
 			로그인
 		</button>
 		<strong class="validation-text">
-			<span class="warning">
+			<span class="error">
 				{{ logMessage }}
 			</span>
 		</strong>
