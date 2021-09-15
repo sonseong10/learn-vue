@@ -1,17 +1,27 @@
 <template>
   <div>
-    <h1>Vue Todo with TypeScript</h1>
-    <TodoInput
-      :todoValue="todoText"
-      @input="observerInput"
-      @add="addTodoItem"
-    ></TodoInput>
+    <header>
+      <h1>Vue Todo with TypeScript</h1>
+    </header>
+    <main>
+      <TodoInput
+        :todoValue="todoText"
+        @input="observerInput"
+        @add="addTodoItem"
+      ></TodoInput>
+      <div>
+        <ul>
+          <TodoItem></TodoItem>
+        </ul>
+      </div>
+    </main>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import TodoInput from './components/TodoInput.vue';
+import TodoItem from './components/TodoItem.vue';
 
 export default Vue.extend({
   data() {
@@ -19,7 +29,7 @@ export default Vue.extend({
       todoText: '',
     };
   },
-  components: { TodoInput },
+  components: { TodoInput, TodoItem },
   methods: {
     observerInput(value: string) {
       this.todoText = value;
