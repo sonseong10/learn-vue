@@ -21,14 +21,12 @@ export default Vue.extend({
   },
   components: { TodoInput },
   methods: {
-    observerInput(value: any) {
+    observerInput(value: string) {
       this.todoText = value;
     },
     addTodoItem() {
       const value = this.todoText;
-      if (!value) {
-        return;
-      }
+
       localStorage.setItem(value, value);
       this.resetTodoValue();
     },
