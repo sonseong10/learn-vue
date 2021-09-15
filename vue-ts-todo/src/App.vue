@@ -11,7 +11,11 @@
       ></TodoInput>
       <div>
         <ul>
-          <TodoItem></TodoItem>
+          <TodoItem
+            v-for="(todoItem, index) in todoItems"
+            :key="index"
+            :todoItem="todoItem"
+          ></TodoItem>
         </ul>
       </div>
     </main>
