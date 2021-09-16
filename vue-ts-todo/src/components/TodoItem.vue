@@ -1,6 +1,8 @@
 <template>
   <li>
-    <p>{{ todoItem }}</p>
+    <p @click="toggleItem" :class="todoItemClass">
+      {{ todoItem.title }}
+    </p>
     <button type="button" @click="removeItem">X</button>
   </li>
 </template>
@@ -14,7 +16,15 @@ export default Vue.extend({
     todoItem: Object as PropType<Todo>,
     index: Number,
   },
+  computed: {
+    todoItemClass(): string | null {
+      return this.todoItem.completed ? 'complete' : null;
+    },
+  },
   methods: {
+    toggleItem() {
+      this.$emit('toggle', this.todoItem, this.index);
+    },
     removeItem() {
       this.$emit('remove', this.index);
     },
