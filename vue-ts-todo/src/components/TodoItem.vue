@@ -1,13 +1,23 @@
 <template>
-  <li>{{ todoItem }}</li>
+  <li>
+    <p>{{ todoItem }}</p>
+    <button type="button" @click="removeItem">X</button>
+  </li>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
+import { Todo } from '@/App.vue';
 
 export default Vue.extend({
   props: {
-    todoItem: String,
+    todoItem: Object as PropType<Todo>,
+    index: Number,
+  },
+  methods: {
+    removeItem() {
+      this.$emit('remove', this.index);
+    },
   },
 });
 </script>

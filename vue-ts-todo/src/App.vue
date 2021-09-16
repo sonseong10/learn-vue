@@ -14,7 +14,9 @@
           <TodoItem
             v-for="(todoItem, index) in todoItems"
             :key="index"
+            :index="index"
             :todoItem="todoItem"
+            @remove="removeTodoItem"
           ></TodoItem>
         </ul>
       </div>
@@ -28,8 +30,14 @@ import TodoInput from './components/TodoInput.vue';
 import TodoItem from './components/TodoItem.vue';
 
 const STOREGE_KEY = 'uid-1';
+
+export interface Todo {
+  title: string;
+  completed: boolean;
+}
+
 const storege = {
-  save(value: any[]) {
+  save(value: Todo[]) {
     const parsed = JSON.stringify(value);
     localStorage.setItem(STOREGE_KEY, parsed);
   },
@@ -44,7 +52,7 @@ export default Vue.extend({
   data() {
     return {
       todoText: '',
-      todoItems: [] as any,
+      todoItems: [] as Todo[],
     };
   },
   components: { TodoInput, TodoItem },
@@ -54,7 +62,11 @@ export default Vue.extend({
     },
     addTodoItem() {
       const value = this.todoText;
-      this.todoItems.push(value);
+      const todo: Todo = {
+        title: value,
+        completed: false,
+      };
+      this.todoItems.push(todo);
       storege.save(this.todoItems);
       this.resetTodoValue();
     },
@@ -63,6 +75,10 @@ export default Vue.extend({
     },
     fetchStorege() {
       this.todoItems = storege.fetch();
+    },
+    removeTodoItem(index: number) {
+      this.todoItems.splice(index, 1);
+      storege.save(this.todoItems);
     },
   },
   created() {
