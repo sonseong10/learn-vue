@@ -42,7 +42,7 @@ const storege = {
     const parsed = JSON.stringify(value);
     localStorage.setItem(STOREGE_KEY, parsed);
   },
-  fetch() {
+  fetch(): Todo[] {
     const todoItems = localStorage.getItem(STOREGE_KEY) || '[]';
     const result = JSON.parse(todoItems);
     return result;
@@ -75,7 +75,15 @@ export default Vue.extend({
       this.todoText = '';
     },
     fetchStorege() {
-      this.todoItems = storege.fetch();
+      this.todoItems = storege.fetch().sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
     },
     removeTodoItem(index: number) {
       this.todoItems.splice(index, 1);
