@@ -19,19 +19,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import UserProfile from "../components/UserProfile.vue"
+import { mapGetters } from "vuex";
+import UserProfile from "../components/UserProfile.vue";
 
 export default {
   components: { UserProfile },
   computed: {
-    ...mapGetters(["fetchedItem"])
+    ...mapGetters(["fetchedItem"]),
   },
   created() {
-    const params = this.$route.params.id
-    this.$store.dispatch("FETCH_ITEM", params)
-  }
-}
+    const params = this.$route.params.id;
+    this.$store.dispatch("FETCH_ITEM", params);
+  },
+};
 </script>
 
 <style scoped>
