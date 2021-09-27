@@ -8,12 +8,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import GnbHeader from "./components/GnbHeader.vue";
 import Spinner from "./components/Spinner.vue";
 import bus from "./utils/bus";
 
-export default {
+export default Vue.extend({
   components: {
     GnbHeader,
     Spinner,
@@ -35,11 +36,11 @@ export default {
     bus.$on("start:spinner", this.startSpinner);
     bus.$on("end:spinner", this.endSpinner);
   },
-  beforDestroy() {
+  beforeDestroy() {
     bus.$off("start:spinner", this.startSpinner);
     bus.$off("end:spinner", this.endSpinner);
   },
-};
+});
 </script>
 
 <style>

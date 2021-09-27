@@ -2,7 +2,7 @@
   <section class="container">
     <h1 class="visually-hidden">News List</h1>
     <ul class="list">
-      <li v-for="item in listOptions" v-bind:key="item.id">
+      <li v-for="item in items" v-bind:key="item.id">
         <template v-if="item.domain">
           <a class="list-item" :href="item.url">
             <strong class="comments-count">{{ item.points || 0 }}</strong>
@@ -43,14 +43,24 @@
   </section>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { NewsItem } from "@/service/api/news-api";
+import Vue, { PropType } from "vue";
+
+export default Vue.extend({
+  props: {
+    items: {
+      type: Array as PropType<NewsItem[]>,
+      required: true,
+    },
+  },
+
   computed: {
-    listOptions() {
-      return this.$store.state.list
-    }
-  }
-}
+    listOptions(): any {
+      return this.$store.getters.fetchedList;
+    },
+  },
+});
 </script>
 
 <style scoped>

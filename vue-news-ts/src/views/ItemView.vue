@@ -27,10 +27,6 @@ export default {
   computed: {
     ...mapGetters(["fetchedItem"]),
   },
-  created() {
-    const params = this.$route.params.id;
-    this.$store.dispatch("FETCH_ITEM", params);
-  },
 };
 </script>
 

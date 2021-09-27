@@ -16,20 +16,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import UserProfile from "../components/UserProfile.vue"
+import { mapGetters } from "vuex";
+import UserProfile from "../components/UserProfile.vue";
+import bus from "@/utils/bus";
 
 export default {
   components: { UserProfile },
-
-  computed: {
-    ...mapGetters(["fetchedUser"])
-  },
   created() {
-    const params = this.$route.params.id
-    this.$store.dispatch("FETCH_USER", params)
-  }
-}
+    bus.$emit("end:spinner");
+  },
+  computed: {
+    ...mapGetters(["fetchedUser"]),
+  },
+};
 </script>
 
 <style></style>
