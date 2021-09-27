@@ -1,8 +1,11 @@
 export default {
   fetchedUser(state) {
-    return state.user
+    return state.user;
   },
   fetchedItem(state) {
-    return state.item
-  }
-}
+    return state.item;
+  },
+  fetchedList(state) {
+    return state.list;
+  },
+};
