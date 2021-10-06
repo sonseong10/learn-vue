@@ -3,12 +3,12 @@ import VueRouter, { NavigationGuardNext, Route } from "vue-router";
 import ItemView from "../views/ItemView.vue";
 import UserView from "../views/UserView.vue";
 import bus from "../utils/bus";
-import { store } from "../store/index";
+import store from "../store/index";
 import createListView from "@/views/CreateListView";
 
 Vue.use(VueRouter);
 
-export const router = new VueRouter({
+export default new VueRouter({
   mode: "history",
   routes: [
     {
