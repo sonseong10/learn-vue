@@ -1,24 +1,19 @@
 import { RootState } from "../state";
-import { NewsItem } from "@/service/api/news-api";
 
 const getters = {
-  fetchedNews(state: RootState): NewsItem[] {
-    return state.news;
+  fetchedUser(state: RootState): any[] {
+    return state.user;
+  },
+
+  fetchedItem(state: RootState): any[] {
+    return state.item;
+  },
+
+  fetchedList(state: RootState): any[] {
+    return state.list;
   },
 };
 
 type Getters = typeof getters;
 
 export { getters, Getters };
-
-// export default {
-//   fetchedUser(state) {
-//     return state.user;
-//   },
-//   fetchedItem(state) {
-//     return state.item;
-//   },
-//   fetchedList(state) {
-//     return state.list;
-//   },
-// };

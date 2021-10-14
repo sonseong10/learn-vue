@@ -1,12 +1,12 @@
 <template>
   <div>
-    <ListItem :items="newsItems" />
+    <ListItem :items="listItems" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { fetchNews, NewsItem } from "@/service/api/news-api";
+import { AskItem, fetchList, JobsItem, NewsItem } from "@/service/api/news-api";
 import ListItem from "@/components/ListItem.vue";
 
 export default Vue.extend({
@@ -14,19 +14,19 @@ export default Vue.extend({
 
   data() {
     return {
-      newsItems: [] as NewsItem[],
+      listItems: [] as NewsItem[] | JobsItem[] | AskItem[],
     };
   },
 
   methods: {
-    async fetchNewsItems() {
-      const { data } = await fetchNews();
-      this.newsItems = data;
+    async fetchListItems() {
+      const { data } = await fetchList(this.$route.name?.toString());
+      this.listItems = data;
     },
   },
 
   created() {
-    this.fetchNewsItems();
+    this.fetchListItems();
   },
 });
 </script>

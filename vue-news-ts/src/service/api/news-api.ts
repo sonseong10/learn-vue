@@ -21,28 +21,50 @@ export interface NewsItem {
   user: string;
 }
 
+export interface AskItem {
+  comments_count: number;
+  id: number;
+  points: number;
+  time: number;
+  time_ago: string;
+  title: string;
+  type: string;
+  url: string;
+  user: string;
+}
+
+export interface JobsItem {
+  comments_count: number;
+  domain: string;
+  id: number;
+  points: null;
+  time: number;
+  time_ago: string;
+  title: string;
+  type: string;
+  url: string;
+  user: null;
+}
+
 function fetchNews(): AxiosPromise<NewsItem[]> {
   return axios.get(api.news);
 }
 
-function fetchAsk() {
-  return axios.get(api.ask);
-}
-
-function fetchJobs() {
+function fetchJobs(): AxiosPromise<JobsItem[]> {
   return axios.get(api.jobs);
 }
 
-async function fetchList(type: any) {
-  try {
-    const response = await axios.get(`https://api.hnpwa.com/v0/${type}/1.json`);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+function fetchAsk(): AxiosPromise<AskItem[]> {
+  return axios.get(api.ask);
 }
 
-async function fetchUser(userId: any) {
+function fetchList(
+  type: any
+): AxiosPromise<NewsItem[] | JobsItem[] | AskItem[]> {
+  return axios.get(`https://api.hnpwa.com/v0/${type}/1.json`);
+}
+
+async function fetchUser(userId: string): Promise<any> {
   try {
     const response = await axios.get(`${api.user}${userId}.json`);
     return response;
@@ -51,7 +73,7 @@ async function fetchUser(userId: any) {
   }
 }
 
-async function fetchItem(itemId: any) {
+async function fetchItem(itemId: any): Promise<any> {
   try {
     const response = await axios.get(`${api.item}${itemId}.json`);
     return response;

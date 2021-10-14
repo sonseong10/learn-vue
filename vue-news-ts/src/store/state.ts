@@ -1,7 +1,7 @@
-import { NewsItem } from "@/service/api/news-api";
-
 const state = {
-  news: [] as NewsItem[],
+  user: [] as any[],
+  item: [] as any[],
+  list: [] as any[],
 };
 
 type RootState = typeof state;

@@ -1,10 +1,15 @@
 import { ActionContext } from "vuex";
-import { fetchNews } from "../../service/api/news-api";
+import {
+  fetchAsk,
+  fetchJobs,
+  fetchList,
+  fetchNews,
+} from "../../service/api/news-api";
 import { RootState } from "../state";
 import { Mutations, MutationTypes } from "./mutations";
 
 enum ActionTyoes {
-  FETCH_NEWS = "FETCH_NEWS",
+  FETCH_LIST = "FETCH_LIST",
 }
 
 type MyActionContext = {
@@ -15,9 +20,9 @@ type MyActionContext = {
 } & Omit<ActionContext<RootState, RootState>, "commit">;
 
 const actions = {
-  async [ActionTyoes.FETCH_NEWS](context: MyActionContext, payload?: any) {
-    const { data } = await fetchNews();
-    context.commit(MutationTypes.SET_NEWS, data);
+  async [ActionTyoes.FETCH_LIST](context: MyActionContext, pageName: string) {
+    const { data } = await fetchList(pageName);
+    context.commit(MutationTypes.SET_LIST, data);
     return data;
   },
 };

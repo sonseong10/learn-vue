@@ -7,9 +7,9 @@ import { actions } from "./modules/actions";
 Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
-  state: state,
-  mutations: mutations,
-  actions: actions,
+  state,
+  mutations,
+  actions,
 };
 
 export default new Vuex.Store(store);

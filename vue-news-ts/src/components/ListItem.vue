@@ -50,7 +50,7 @@ import Vue, { PropType } from "vue";
 export default Vue.extend({
   props: {
     items: {
-      type: Array as PropType<NewsItem[]>,
+      type: Array as PropType<any[]>,
       required: true,
     },
   },

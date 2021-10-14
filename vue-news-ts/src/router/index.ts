@@ -43,7 +43,7 @@ export default new VueRouter({
         store
           .dispatch("FETCH_LIST", to.name)
           .then(() => next())
-          .catch(() => new Error("failed to fetch user profile"));
+          .catch(() => new Error("failed to fetch user ask"));
       },
     },
     {
