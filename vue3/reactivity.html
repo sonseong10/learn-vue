@@ -1,0 +1,23 @@
+<div id="app"></div>
+
+<script>
+  const data = {
+    a: 10,
+  };
+
+  function render(sth) {
+    const div = document.querySelector("#app");
+    div.innerHTML = sth;
+  }
+
+  const app = new Proxy(data, {
+    get() {
+      console.log(`get ${data.a}`);
+    },
+    set(target, prop, value) {
+      console.log("updated");
+      target[prop] = value;
+      render(value);
+    },
+  });
+</script>
